@@ -1,4 +1,4 @@
-package com.restaurant.management.vaadinui;
+package com.restaurant.management.vaadinui.order;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.FontAwesome;

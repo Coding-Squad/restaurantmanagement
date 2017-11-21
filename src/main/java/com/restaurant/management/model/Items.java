@@ -1,19 +1,22 @@
-package com.restaurant.management.vaadinui;
+package com.restaurant.management.model;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="items")
 public class Items{
 
+    @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(name="itemName")
     private String name;
+
+    @Column(name="itemPrice")
     private double price;
 
     public Items() {

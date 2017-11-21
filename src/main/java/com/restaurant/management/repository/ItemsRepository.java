@@ -1,6 +1,6 @@
 package com.restaurant.management.repository;
 
-import com.restaurant.management.vaadinui.Items;
+import com.restaurant.management.model.Items;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

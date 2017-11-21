@@ -1,6 +1,7 @@
-package com.restaurant.management.vaadinui;
+package com.restaurant.management.vaadinui.order;
 
 
+import com.restaurant.management.model.Items;
 import com.restaurant.management.repository.ItemsRepository;
 import com.vaadin.ui.VerticalLayout;
 import org.springframework.beans.factory.annotation.Autowired;

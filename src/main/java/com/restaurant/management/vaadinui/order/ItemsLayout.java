@@ -1,7 +1,7 @@
-package com.restaurant.management.vaadinui;
+package com.restaurant.management.vaadinui.order;
 
+import com.restaurant.management.model.Items;
 import com.vaadin.data.Binder;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
