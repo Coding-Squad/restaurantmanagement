@@ -93,4 +93,9 @@ public class ProductsCategory {
     public void setProductDetails(String productDetails) {
         this.productDetails = productDetails;
     }
+
+    @Override
+    public String toString() {
+        return getProductName();
+    }
 }

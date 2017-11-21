@@ -31,6 +31,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
+    public ProductsCategory updateProductCategory(long productsCategoryId) {
+        return productsCategoryRepository.findOne(productsCategoryId);
+    }
+
+    @Override
     public ProductsCategory edit(ProductsCategory productsCategory) {
 
 

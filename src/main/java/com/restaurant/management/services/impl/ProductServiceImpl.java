@@ -49,6 +49,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Products updateProduct(long productsId) {
+        return productsRepository.findOne(productsId);
+    }
+
+    @Override
     public boolean deleteProductsCategory(Long postId) {
         return false;
     }

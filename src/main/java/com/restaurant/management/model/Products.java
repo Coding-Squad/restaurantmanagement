@@ -33,9 +33,31 @@ public class Products {
     @NotEmpty(message = "*Please provide a title")
     private String productName;
 
+    @Column(name = "product_details")
+    private String details;
+
+    @Column(name = "product_category_Id", nullable = false)
+    private Long product_category_Id;
+
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 
     public Long getId() {
         return id;
+    }
+
+    public Long getProduct_category_Id() {
+        return product_category_Id;
+    }
+
+    public void setProduct_category_Id(Long product_category_Id) {
+        this.product_category_Id = product_category_Id;
     }
 
     public void setId(Long id) {

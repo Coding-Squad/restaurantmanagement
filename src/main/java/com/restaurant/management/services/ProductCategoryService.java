@@ -16,6 +16,8 @@ public interface ProductCategoryService {
 
     void saveProductCategory(ProductsCategory productsCategory);
 
+    ProductsCategory updateProductCategory(long productsCategoryId);
+
     ProductsCategory edit(ProductsCategory productsCategory);
 
 }

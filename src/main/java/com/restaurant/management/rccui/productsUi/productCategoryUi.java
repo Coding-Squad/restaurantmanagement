@@ -27,7 +27,7 @@ public class productCategoryUi extends UI{
     private TextField categoryNameTextField;
     private TextArea categoryDescriptionTextArea;
 
-    Grid<ProductsCategory> grid = new Grid<>();
+    Grid<ProductsCategory> grid;
 
     private Button				sendButton;
     private Button				editButton;
@@ -38,9 +38,13 @@ public class productCategoryUi extends UI{
     @Autowired
     ProductCategoryService categoryService;
 
+
+
+    ProductsCategory productsCategory;
     @Override
     protected void init(VaadinRequest vaadinRequest) {
 
+        grid = new Grid<>();
         setUplayout();
         addHeader();
         addForm();
@@ -98,9 +102,13 @@ public class productCategoryUi extends UI{
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
 
-                ProductsCategory productsCategory = new ProductsCategory();
+                if (productsCategory == null) {
+                    productsCategory = new ProductsCategory();
 
+                }
+                //Todo: adding user Id here
                 productsCategory.setUserId(Long.valueOf(100));
+
                 productsCategory.setCreateDate(new Date());
                 productsCategory.setModifiedDate(new Date());
 
@@ -136,17 +144,7 @@ public class productCategoryUi extends UI{
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
 
-                grid.addSelectionListener(selectionEvent -> {
 
-                    grid.addItemClickListener(event ->{
-
-                        categoryNameTextField.setValue(event.getItem().getProductName());
-                        categoryDescriptionTextArea.setValue(event.getItem().getProductDetails());
-                            });
-
-
-
-                });
             }
         });
 
@@ -161,7 +159,35 @@ public class productCategoryUi extends UI{
             }
         });
 
-        buttonLayout.addComponents(sendButton,editButton,resetButton);
+
+
+        grid.addSelectionListener(selectionEvent -> {
+
+            grid.addItemClickListener(event ->{
+
+                if (event.getItem().getId() == 0) {
+                    Notification.show("Please select a row !", Notification.Type.HUMANIZED_MESSAGE);
+                }else{
+                    productsCategory =categoryService.updateProductCategory(event.getItem().getId());
+                }
+
+                if (event.getItem().getProductName() != null){
+                    categoryNameTextField.setValue(event.getItem().getProductName());
+                }else{
+                    categoryNameTextField.setValue("");
+                }
+                if (event.getItem().getProductDetails() != null){
+                    categoryDescriptionTextArea.setValue(event.getItem().getProductDetails());
+                }else{
+                    categoryDescriptionTextArea.setValue("");
+                }
+
+
+            });
+
+        });
+
+        buttonLayout.addComponents(sendButton,resetButton);
         verticalLayout.addComponent(buttonLayout);
 
 
@@ -181,11 +207,11 @@ public class productCategoryUi extends UI{
     private void loadAllCategory() {
         // Create a grid bound to the list
         updateList();
+
         grid.addColumn(ProductsCategory::getProductName).setCaption("Product Name");
         grid.addColumn(ProductsCategory::getProductDetails).setCaption("Details");
 
         verticalLayout.addComponent(grid);
-
 
     }
 
