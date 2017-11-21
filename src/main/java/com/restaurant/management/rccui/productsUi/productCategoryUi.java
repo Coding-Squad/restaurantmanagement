@@ -1,5 +1,6 @@
 package com.restaurant.management.rccui.productsUi;
 
+
 import com.restaurant.management.model.ProductsCategory;
 import com.restaurant.management.services.ProductCategoryService;
 import com.vaadin.annotations.Theme;
@@ -7,10 +8,12 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
+import com.vaadin.ui.components.grid.MultiSelectionModel;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Pranto on 21-Nov-17.
@@ -24,6 +27,7 @@ public class productCategoryUi extends UI{
     private TextField categoryNameTextField;
     private TextArea categoryDescriptionTextArea;
 
+    Grid<ProductsCategory> grid = new Grid<>();
 
     private Button				sendButton;
     private Button				editButton;
@@ -86,7 +90,7 @@ public class productCategoryUi extends UI{
 
     private void buttonLayout() {
         HorizontalLayout buttonLayout = new HorizontalLayout();
-        sendButton = new Button("");
+        sendButton = new Button(" Add");
         sendButton.setIcon(VaadinIcons.PLUS);
         sendButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
@@ -118,15 +122,36 @@ public class productCategoryUi extends UI{
                 Notification.show("Category Saved Successfully", Notification.Type.HUMANIZED_MESSAGE);
 
                 clearUi();
+                updateList();
 
 
             }
         });
 
-        editButton= new Button("Edit ");
+        editButton= new Button("Edit");
+        editButton.setIcon(VaadinIcons.EDIT);
         editButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
+        editButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+
+                grid.addSelectionListener(selectionEvent -> {
+
+                    grid.addItemClickListener(event ->{
+
+                        categoryNameTextField.setValue(event.getItem().getProductName());
+                        categoryDescriptionTextArea.setValue(event.getItem().getProductDetails());
+                            });
+
+
+
+                });
+            }
+        });
+
         resetButton= new Button("Clear");
+        resetButton.setIcon(VaadinIcons.REFRESH);
         resetButton.addStyleName(ValoTheme.BUTTON_DANGER);
 
         resetButton.addClickListener(new Button.ClickListener() {
@@ -152,9 +177,21 @@ public class productCategoryUi extends UI{
          }
 
 
+
     private void loadAllCategory() {
+        // Create a grid bound to the list
+        updateList();
+        grid.addColumn(ProductsCategory::getProductName).setCaption("Product Name");
+        grid.addColumn(ProductsCategory::getProductDetails).setCaption("Details");
+
+        verticalLayout.addComponent(grid);
 
 
+    }
+
+    public void updateList(){
+        List<ProductsCategory> allProductCategories= categoryService.getAllProductCategories();
+        grid.setItems(allProductCategories);
     }
 
 }
