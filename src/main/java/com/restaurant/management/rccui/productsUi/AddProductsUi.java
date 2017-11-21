@@ -78,7 +78,7 @@ public class AddProductsUi extends UI{
 
     private void addForm() {
 
-        mainGridLayout = new GridLayout(7, 2);
+        mainGridLayout = new GridLayout(7, 3);
         mainGridLayout.setWidth("100%");
         mainGridLayout.setSpacing(true);
         mainGridLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
