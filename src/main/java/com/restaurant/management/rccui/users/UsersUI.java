@@ -9,7 +9,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-@SpringUI
+@SpringUI(path = "/user")
 @Theme("valo")
 public class UsersUI extends UI{
 
@@ -25,12 +25,11 @@ public class UsersUI extends UI{
         addHeader();
         addForm();
         addUsersList();
-        addActionButton();
+        //addActionButton();
     }
 
     private void setUplayout() {
         verticalLayout = new VerticalLayout();
-
         verticalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         setContent(verticalLayout);
     }
@@ -43,9 +42,16 @@ public class UsersUI extends UI{
     }
 
     private void addForm() {
-        HorizontalLayout formLayout = new HorizontalLayout();
+        VerticalLayout formLayout = new VerticalLayout();
+        formLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         formLayout.setSpacing(true);
-        formLayout.setWidth("80%");
+        formLayout.setWidth("100%");
+
+        GridLayout userFormGridLayout = new GridLayout(8,8);
+        userFormGridLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        userFormGridLayout.setSpacing(true);
+
+
         Label userNameLabel = new Label("Name:");
         TextField userName = new TextField();
         Label emailLabel = new Label("Email:");
@@ -57,8 +63,22 @@ public class UsersUI extends UI{
         Button addButton = new Button("Add User");
         addButton.setIcon(FontAwesome.PLUS);
         addButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
-        formLayout.addComponents(userNameLabel, userName, emailLabel, email, mobileNumberLabel,mobileNumber,
-               passwordLabel, password, addButton);
+        Button updateButton = new Button("Update");
+        updateButton.setIcon(FontAwesome.EDIT);
+        updateButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
+
+        userFormGridLayout.addComponent(userNameLabel, 0,0);
+        userFormGridLayout.addComponent(userName, 3,0);
+        userFormGridLayout.addComponent(emailLabel, 0,1);
+        userFormGridLayout.addComponent(email, 3,1);
+        userFormGridLayout.addComponent(mobileNumberLabel, 0,2);
+        userFormGridLayout.addComponent(mobileNumber, 3,2);
+        userFormGridLayout.addComponent(passwordLabel, 0,3);
+        userFormGridLayout.addComponent(password, 3,3);
+        userFormGridLayout.addComponent(addButton, 2,5);
+        userFormGridLayout.addComponent(updateButton, 4,5);
+
+        formLayout.addComponents(userFormGridLayout);
         verticalLayout.addComponent(formLayout);
     }
 
@@ -67,11 +87,11 @@ public class UsersUI extends UI{
         verticalLayout.addComponent(usersLists);
     }
 
-    private void addActionButton() {
+   /* private void addActionButton() {
         Button updateButton = new Button("Update");
 
         verticalLayout.addComponent(updateButton);
         updateButton.setIcon(FontAwesome.EDIT);
         updateButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
-    }
+    }*/
 }

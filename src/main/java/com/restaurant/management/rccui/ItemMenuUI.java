@@ -9,7 +9,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-@SpringUI
+@SpringUI(path = "/items")
 @Theme("valo")
 public class ItemMenuUI extends UI{
 
