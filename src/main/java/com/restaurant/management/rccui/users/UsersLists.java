@@ -1,9 +1,7 @@
 package com.restaurant.management.rccui.users;
 
 
-import com.restaurant.management.model.Items;
 import com.restaurant.management.model.Users;
-import com.restaurant.management.repository.ItemsRepository;
 import com.restaurant.management.repository.UsersRepository;
 import com.vaadin.ui.VerticalLayout;
 import org.springframework.beans.factory.annotation.Autowired;

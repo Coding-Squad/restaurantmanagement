@@ -1,6 +1,5 @@
 package com.restaurant.management.rccui.users;
 
-import com.restaurant.management.model.Items;
 import com.restaurant.management.model.Users;
 import com.vaadin.data.Binder;
 import com.vaadin.ui.HorizontalLayout;

@@ -1,10 +1,10 @@
 package com.restaurant.management.repository;
 
-import com.restaurant.management.model.Items;
+import com.restaurant.management.model.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Created by Pranto on 21-Nov-17.
  */
-public interface ProductsDetailsRepository extends JpaRepository<Items, Long> {
+public interface ProductsDetailsRepository extends JpaRepository<Products, Long> {
 }
