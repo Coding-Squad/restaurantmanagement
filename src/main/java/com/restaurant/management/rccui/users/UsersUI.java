@@ -47,7 +47,7 @@ public class UsersUI extends UI{
         formLayout.setSpacing(true);
         formLayout.setWidth("70%");
 
-        GridLayout userFormGridLayout = new GridLayout(8,8);
+        GridLayout userFormGridLayout = new GridLayout(6,6);
         userFormGridLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         userFormGridLayout.setSpacing(true);
 
@@ -73,18 +73,20 @@ public class UsersUI extends UI{
 
         buttonLayout.addComponents(addButton, updateButton);
 
-        userFormGridLayout.addComponent(userNameLabel, 0,0);
-        userFormGridLayout.addComponent(userName, 2,0);
-        userFormGridLayout.addComponent(emailLabel, 0,1);
-        userFormGridLayout.addComponent(email, 2,1);
-        userFormGridLayout.addComponent(mobileNumberLabel, 0,2);
-        userFormGridLayout.addComponent(mobileNumber, 2,2);
-        userFormGridLayout.addComponent(passwordLabel, 0,3);
-        userFormGridLayout.addComponent(password, 2,3);
-        userFormGridLayout.addComponent(buttonLayout, 1,5);
+        userFormGridLayout.addComponent(userNameLabel, 0,1);
+        userFormGridLayout.addComponent(userName, 2,1);
+        userFormGridLayout.addComponent(emailLabel, 0,2);
+        userFormGridLayout.addComponent(email, 2,2);
+        userFormGridLayout.addComponent(mobileNumberLabel, 0,3);
+        userFormGridLayout.addComponent(mobileNumber, 2,3);
+        userFormGridLayout.addComponent(passwordLabel, 0,4);
+        userFormGridLayout.addComponent(password, 2,4);
+        //userFormGridLayout.addComponent(addButton, 2,5);
+        //userFormGridLayout.addComponent(updateButton, 3,5);
 
         formLayout.addComponents(userFormGridLayout);
         verticalLayout.addComponent(formLayout);
+        verticalLayout.addComponent(buttonLayout);
     }
 
     private void addUsersList() {
