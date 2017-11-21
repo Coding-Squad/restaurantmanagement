@@ -8,9 +8,6 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * Created by Masum on 11/21/2017.
- */
 
 @SpringUI
 @Theme("valo")
@@ -19,7 +16,7 @@ public class VaadinUI extends UI{
     private VerticalLayout verticalLayout;
 
     @Autowired
-    Items itemLists;
+    ItemLists itemLists;
 
 
     @Override
@@ -33,6 +30,7 @@ public class VaadinUI extends UI{
 
     private void setUplayout() {
         verticalLayout = new VerticalLayout();
+
         verticalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         setContent(verticalLayout);
     }

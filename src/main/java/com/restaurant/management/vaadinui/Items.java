@@ -1,23 +1,50 @@
 package com.restaurant.management.vaadinui;
 
-import com.vaadin.ui.VerticalLayout;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-import org.springframework.stereotype.Component;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
-@Component
 @Entity
 @Table(name="items")
-public class Items  extends VerticalLayout{
+public class Items{
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private double price;
 
+    public Items() {
+    }
 
+    public Items(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
