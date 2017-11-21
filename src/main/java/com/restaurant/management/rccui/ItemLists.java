@@ -1,4 +1,4 @@
-package com.restaurant.management.vaadinui.order;
+package com.restaurant.management.rccui;
 
 
 import com.restaurant.management.model.Items;
