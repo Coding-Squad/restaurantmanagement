@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringUI
 @Theme("valo")
-public class VaadinUI extends UI{
+public class ItemMenuUI extends UI{
 
     private VerticalLayout verticalLayout;
 
@@ -63,10 +63,10 @@ public class VaadinUI extends UI{
     }
 
     private void addActionButton() {
-        Button deleteButton = new Button("Delete");
+        Button updateButton = new Button("Update");
 
-        verticalLayout.addComponent(deleteButton);
-        deleteButton.setIcon(FontAwesome.MINUS);
-        deleteButton.setStyleName(ValoTheme.BUTTON_DANGER);
+        verticalLayout.addComponent(updateButton);
+        updateButton.setIcon(FontAwesome.EDIT);
+        updateButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
     }
 }
