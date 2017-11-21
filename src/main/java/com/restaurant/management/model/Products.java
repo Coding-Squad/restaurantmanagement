@@ -1,7 +1,9 @@
 package com.restaurant.management.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Programmer on 21-Nov-17.
