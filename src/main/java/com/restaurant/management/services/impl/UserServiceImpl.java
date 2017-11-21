@@ -7,7 +7,6 @@ import com.restaurant.management.repository.UsersRepository;
 import com.restaurant.management.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -23,8 +22,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UsersRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+   /* @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;*/
 
     @Qualifier("roleRepository")
     @Autowired
@@ -32,8 +31,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void saveUser(Users user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        //user.setPassword(user.getPassword());
+        //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(user.getPassword());
         user.setActive(1);
         /*Role userRole = roleRepository.findByRole("GENERAL");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));*/
