@@ -6,16 +6,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Programmer on 21-Nov-17.
+ * Created by Pranto on 21-Nov-17.
  */
 
 @Entity
-@Table(name = "products")
-public class Products {
+@Table(name = "products_details")
+public class ProductsDetails {
+
     //>>>>>deafult value for bean
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_Id")
+    @Column(name = "product_details_Id")
     private Long id;
 
     @Column(name = "user_Id", nullable = false)
@@ -29,9 +30,17 @@ public class Products {
 
     //>>>>>>>>>deafult value for bean end
 
-    @Column(name = "product_name", nullable = false)
-    @NotEmpty(message = "*Please provide a title")
-    private String productName;
+    @Column(name = "product_Id", nullable = false)
+    private Long productId;
+
+    @Column(name = "quantity", nullable = false)
+    private Double quantity;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    @Column(name = "expired_Date" , nullable = false)
+    private Date expiredDate ;
 
 
     public Long getId() {
@@ -40,14 +49,6 @@ public class Products {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public Long getUserId() {
@@ -73,4 +74,37 @@ public class Products {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Date getExpiredDate() {
+        return expiredDate;
+    }
+
+    public void setExpiredDate(Date expiredDate) {
+        this.expiredDate = expiredDate;
+    }
+
 }
