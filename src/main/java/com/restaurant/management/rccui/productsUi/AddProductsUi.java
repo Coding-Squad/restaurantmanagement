@@ -78,7 +78,7 @@ public class AddProductsUi extends UI{
 
     private void addForm() {
 
-        mainGridLayout = new GridLayout(7, 4);
+        mainGridLayout = new GridLayout(7, 2);
         mainGridLayout.setWidth("100%");
         mainGridLayout.setSpacing(true);
         mainGridLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
@@ -109,10 +109,15 @@ public class AddProductsUi extends UI{
 
     }
 
+
     private void buttonLayout() {
         HorizontalLayout buttonLayout = new HorizontalLayout();
+        buttonLayout.setSpacing(true);
+
        			sendButton = new Button("Add");
        			sendButton.setIcon(VaadinIcons.PLUS);
+
+       			sendButton = new Button("Add Product");
                 sendButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
         sendButton.addClickListener(new Button.ClickListener() {
@@ -206,6 +211,7 @@ public class AddProductsUi extends UI{
 
         buttonLayout.addComponents(sendButton,resetButton);
         verticalLayout.addComponent(buttonLayout);
+
 
     }
 
