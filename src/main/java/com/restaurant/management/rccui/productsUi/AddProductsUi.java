@@ -78,6 +78,7 @@ public class AddProductsUi extends UI{
 
     private void buttonLayout() {
         HorizontalLayout buttonLayout = new HorizontalLayout();
+        buttonLayout.setSpacing(true);
        			sendButton = new Button("Add Product");
                 sendButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
